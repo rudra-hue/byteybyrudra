@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning DSA with C++</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+  
+    body {
+      background: #0a192f; /* deep navy blue background */
+      color: #e6f1ff; /* light blue text for contrast */
+      line-height: 1.6;
+    }
+  
+    /* Navbar */
+    header {
+      background: linear-gradient(135deg, #0a192f, #112240); /* navy to dark blue gradient */
+      padding: 1rem 2rem;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+      border-bottom: 1px solid #64ffda; /* teal accent */
+    }
+  
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #ccd6f6; /* light blue-gray */
+    }
+  
+    nav h1 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #64ffda; /* teal accent */
+    }
+  
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+  
+    nav ul li a {
+      text-decoration: none;
+      color: #ccd6f6;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+  
+    nav ul li a:hover {
+      color: #64ffda; /* teal hover */
+    }
+  
+    /* Blog Content */
+    .blogs {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: #112240; /* dark blue card */
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      border: 1px solid #1e3a8a; /* subtle border */
+    }
+  
+    .blogs h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
+      color: #64ffda; /* teal heading */
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+  
+    .blogs p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      color: #8892b0; /* muted blue-gray */
+      line-height: 1.8;
+    }
+  
+    .blogs b {
+      color: #64ffda; /* teal for bold text */
+      font-weight: 500;
+    }
+    
+    .dsa-highlight {
+      background: rgba(100, 255, 218, 0.1);
+      border-left: 4px solid #64ffda;
+      padding: 1.5rem;
+      border-radius: 0 8px 8px 0;
+      margin: 2rem 0;
+    }
+    
+    .learning-path {
+      background: rgba(100, 255, 218, 0.05);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid rgba(100, 255, 218, 0.2);
+      margin: 2rem 0;
+    }
+    
+    .learning-path h3 {
+      color: #64ffda;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    
+    .dsa-topics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .topic {
+      background: rgba(100, 255, 218, 0.05);
+      padding: 1.2rem;
+      border-radius: 8px;
+      border: 1px solid rgba(100, 255, 218, 0.2);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    
+    .topic:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(100, 255, 218, 0.1);
+    }
+    
+    .topic h3 {
+      color: #64ffda;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    
+    .inspiration {
+      background: rgba(100, 255, 218, 0.1);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+    }
+    
+    .inspiration h3 {
+      color: #64ffda;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .back-link {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.6rem 1.2rem;
+      background: transparent;
+      color: #64ffda;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      transition: all 0.3s;
+      border: 1px solid #64ffda;
+    }
+  
+    .back-link:hover {
+      background: rgba(100,255,218,0.1);
+      transform: scale(1.05);
+    }
+    
+    .code-snippet {
+      background: #0d1b36;
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+      overflow-x: auto;
+      border-left: 4px solid #64ffda;
+    }
+    
+    .code-snippet pre {
+      color: #e6f1ff;
+      font-family: 'Courier New', monospace;
+    }
+    
+    .comment { color: #5e81ac; }
+    .keyword { color: #81a1c1; }
+    .function { color: #88c0d0; }
+    .var { color: #d8dee9; }
+    .string { color: #a3be8c; }
+  
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1.2rem;
+      background: #0a192f; /* same as body */
+      color: #8892b0;
+      margin-top: 3rem;
+      font-size: 0.95rem;
+      border-top: 1px solid #64ffda; /* teal accent */
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <header>
+    <nav>
+      <h1>BYTE BY RUDRA</h1>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Blog Content -->
+  <section class="blogs">
+    <h2><span>Learning DSA with C++</span> 📘</h2>
+    
+    <div class="dsa-highlight">
+      <p>When I first started programming, I was excited but also confused. I could write small programs, but solving bigger problems felt difficult. That's when I discovered <b>Data Structures and Algorithms (DSA)</b>.</p>
+    </div>
+    
+    <p>I started with simple concepts like arrays and linked lists, and then moved to stacks, queues, and trees. Each new concept gave me the power to solve problems faster and in a better way.</p>
+    
+    <div class="dsa-topics">
+      <div class="topic">
+        <h3>📊 Arrays</h3>
+        <p>Foundation of data structures, essential for storing collections of data</p>
+      </div>
+      <div class="topic">
+        <h3>🔗 Linked Lists</h3>
+        <p>Dynamic data structure that allows efficient insertions and deletions</p>
+      </div>
+      <div class="topic">
+        <h3>🌳 Trees</h3>
+        <p>Hierarchical data structure perfect for representing relationships</p>
+      </div>
+    </div>
+    
+    
+    
+    <div class="inspiration">
+      <h3>💡 Inspiration</h3>
+      <p>I was inspired by watching senior students and online coders solve competitive programming challenges. Their way of thinking motivated me to learn DSA step by step. Today, I feel proud that I can solve problems which earlier felt impossible.</p>
+    </div>
+    
+    <div class="learning-path">
+      <h3>My DSA Learning Journey</h3>
+      <p>My approach to learning DSA has been methodical:</p>
+      <ol style="padding-left: 1.5rem; color: #8892b0;">
+        <li style="margin-bottom: 0.5rem;">Starting with basic data structures (Arrays, Linked Lists)</li>
+        <li style="margin-bottom: 0.5rem;">Moving to more complex structures (Stacks, Queues, Trees, Graphs)</li>
+        <li style="margin-bottom: 0.5rem;">Learning essential algorithms (Searching, Sorting, Recursion)</li>
+        <li style="margin-bottom: 0.5rem;">Practicing problem-solving on platforms like LeetCode and HackerRank</li>
+        <li>Applying DSA knowledge in real projects and coding contests</li>
+      </ol>
+    </div>
+    
+    <p>My next goal is to apply DSA knowledge in real projects and coding contests.</p>
+    
+    <a href="index.html" class="back-link">← Back to Home</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Rudra Parmar | Made with ❤️ in Bhuj</p>
+  </footer>
+</body>
+</html>

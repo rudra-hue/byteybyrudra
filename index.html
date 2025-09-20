@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TECHTALES BY RUDRA</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+  
+    body {
+      background: #0a192f; /* deep navy blue background */
+      color: #e6f1ff; /* light blue text for contrast */
+      line-height: 1.6;
+    }
+  
+    /* Navbar */
+    header {
+      background: linear-gradient(135deg, #0a192f, #112240); /* navy to dark blue gradient */
+      padding: 1rem 2rem;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+      border-bottom: 1px solid #64ffda; /* teal accent */
+    }
+  
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #ccd6f6; /* light blue-gray */
+    }
+  
+    nav h1 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #64ffda; /* teal accent */
+    }
+  
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+  
+    nav ul li a {
+      text-decoration: none;
+      color: #ccd6f6;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+  
+    nav ul li a:hover {
+      color: #64ffda; /* teal hover */
+    }
+  
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: #112240; /* dark blue card */
+      border-radius: 20px;
+      max-width: 900px;
+      margin: 2rem auto;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      animation: fadeIn 1.2s ease-in-out;
+      border: 1px solid #1e3a8a; /* subtle border */
+    }
+  
+    .hero img {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 6px solid #64ffda; /* teal border */
+      box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+      margin-bottom: 1rem;
+      transition: transform 0.4s, box-shadow 0.4s;
+    }
+  
+    .hero img:hover {
+      transform: scale(1.08);
+      box-shadow: 0 10px 30px rgba(100,255,218,0.6); /* teal glow */
+    }
+  
+    .hero h2 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: #64ffda; /* teal text */
+    }
+  
+    .hero p {
+      font-size: 1.1rem;
+      color: #8892b0; /* muted blue-gray */
+    }
+  
+    /* Blog Section */
+    .blogs {
+      max-width: 1000px;
+      margin: 3rem auto;
+      padding: 1rem;
+    }
+  
+    .blogs h2 {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+      color: #64ffda; /* teal heading */
+    }
+  
+    .blog-card {
+      background: #112240; /* dark blue card */
+      padding: 1.8rem;
+      border-radius: 15px;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 1px solid #1e3a8a; /* subtle border */
+    }
+  
+    .blog-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 28px rgba(100,255,218,0.2); /* teal tint on hover */
+    }
+  
+    .blog-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
+      color: #ccd6f6; /* light blue title */
+    }
+  
+    .blog-card p {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      color: #8892b0; /* muted blue-gray */
+    }
+  
+    .blog-card a {
+      display: inline-block;
+      padding: 0.6rem 1.2rem;
+      background: transparent; /* transparent background */
+      color: #64ffda; /* teal text */
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      transition: all 0.3s;
+      border: 1px solid #64ffda; /* teal border */
+    }
+  
+    .blog-card a:hover {
+      background: rgba(100,255,218,0.1); /* subtle teal background on hover */
+      transform: scale(1.05);
+    }
+  
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1.2rem;
+      background: #0a192f; /* same as body */
+      color: #8892b0;
+      margin-top: 3rem;
+      font-size: 0.95rem;
+      border-top: 1px solid #64ffda; /* teal accent */
+    }
+  
+    /* Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+  
+</head>
+<body>
+  <!-- Navigation -->
+  <header>
+    <nav>
+      <h1>BYTE BY RUDRA</h1>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <img src="1.png" alt="Profile Photo">
+    <h2>Hi, I'm Rudra 👋</h2>
+    <p>Student | Tech Enthusiast | Blogger</p>
+  </section>
+
+  <!-- Blog Section -->
+  <section class="blogs">
+    <h2>My Recent Posts</h2>
+    
+    <div class="blog-card">
+      <h3>📘 Learning DSA with C++</h3>
+      <p>My journey of mastering Data Structures and Algorithms, building a strong foundation...</p>
+      <a href="dsa.html">Read More</a>
+    </div>
+    
+    <div class="blog-card">
+      <h3>🐍 Why I Like Python</h3>
+      <p>Python makes coding fun, simple, and powerful. Here's why I enjoy it so much...</p>
+      <a href="python.html">Read More</a>
+    </div>
+    
+    <div class="blog-card">
+      <h3>🤖 Want to go in AI with a Strong Base</h3>
+      <p>My dream is to enter Artificial Intelligence with solid fundamentals in coding & DSA...</p>
+      <a href="ai.html">Read More</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Rudra Parmar | Made with ❤️ in Bhuj</p>
+  </footer>
+</body>
+</html>

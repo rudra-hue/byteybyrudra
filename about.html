@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Me - Rudra's Blog</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: #0a192f; /* deep navy blue background */
+      color: #e6f1ff; /* light blue text for contrast */
+      line-height: 1.6;
+    }
+
+    /* Navbar */
+    header {
+      background: linear-gradient(135deg, #0a192f, #112240); /* navy to dark blue gradient */
+      padding: 1rem 2rem;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+      border-bottom: 1px solid #64ffda; /* teal accent */
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #ccd6f6; /* light blue-gray */
+    }
+
+    nav h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #64ffda; /* teal accent */
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #ccd6f6;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      padding: 0.5rem 0;
+      position: relative;
+    }
+
+    nav ul li a:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: #64ffda;
+      transition: width 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #64ffda;
+    }
+
+    nav ul li a:hover:after {
+      width: 100%;
+    }
+
+    /* About Section */
+    .about {
+      max-width: 1100px;
+      margin: 4rem auto;
+      padding: 3rem;
+      background: #112240; /* dark blue card */
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 1.2s ease-in-out;
+      border: 1px solid #1e3a8a; /* subtle border */
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about:before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(100, 255, 218, 0.1) 0%, transparent 70%);
+      z-index: 0;
+    }
+
+    .profile-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .profile-img {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 6px solid #64ffda;
+      box-shadow: 0 10px 30px rgba(100, 255, 218, 0.3);
+      margin-bottom: 1.5rem;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 35px rgba(100, 255, 218, 0.4);
+    }
+
+    .profile-img:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(100, 255, 218, 0.2), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .profile-img:hover:after {
+      opacity: 1;
+    }
+
+    .about h2 {
+      font-size: 2.8rem;
+      margin-bottom: 1.5rem;
+      color: #64ffda;
+      position: relative;
+      display: inline-block;
+    }
+
+    .about h2:after {
+      content: '';
+      position: absolute;
+      width: 60%;
+      height: 3px;
+      background: #64ffda;
+      bottom: -10px;
+      left: 20%;
+      border-radius: 3px;
+    }
+
+    .about p {
+      font-size: 1.2rem;
+      margin-bottom: 2.5rem;
+      color: #8892b0;
+      max-width: 800px;
+      line-height: 1.8;
+    }
+
+    .about strong {
+      color: #64ffda;
+      font-weight: 600;
+    }
+
+    /* Interests Cards */
+    .interests {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card {
+      background: rgba(17, 34, 64, 0.7);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(100, 255, 218, 0.2);
+      text-align: center;
+      backdrop-filter: blur(5px);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(100, 255, 218, 0.2);
+      border-color: #64ffda;
+    }
+
+    .card i {
+      font-size: 2.5rem;
+      color: #64ffda;
+      margin-bottom: 1.2rem;
+      display: block;
+    }
+
+    .card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      color: #ccd6f6;
+    }
+
+    .card p {
+      font-size: 1rem;
+      color: #8892b0;
+      line-height: 1.6;
+    }
+
+    /* Quote */
+    blockquote {
+      font-style: italic;
+      color: #ccd6f6;
+      background: rgba(17, 34, 64, 0.7);
+      padding: 2rem;
+      border-left: 5px solid #64ffda;
+      border-radius: 10px;
+      margin-top: 3rem;
+      text-align: center;
+      font-size: 1.3rem;
+      position: relative;
+      z-index: 1;
+      backdrop-filter: blur(5px);
+    }
+
+    blockquote:before, blockquote:after {
+      content: '"';
+      font-size: 3rem;
+      color: #64ffda;
+      opacity: 0.3;
+      position: absolute;
+    }
+
+    blockquote:before {
+      top: 10px;
+      left: 20px;
+    }
+
+    blockquote:after {
+      bottom: 10px;
+      right: 20px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #0a192f;
+      color: #8892b0;
+      margin-top: 4rem;
+      border-top: 1px solid #64ffda;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: #112240;
+      color: #64ffda;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(100, 255, 218, 0.3);
+    }
+
+    .social-links a:hover {
+      background: #64ffda;
+      color: #0a192f;
+      transform: translateY(-5px);
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      nav ul {
+        gap: 1rem;
+      }
+      
+      .about {
+        padding: 2rem 1.5rem;
+        margin: 2rem 1rem;
+      }
+      
+      .about h2 {
+        font-size: 2.2rem;
+      }
+      
+      .interests {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header>
+    <nav>
+      <h1>BYTE BY RUDRA</h1>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- About Section -->
+  <section class="about">
+    <div class="profile-container">
+      <img src="1.png" alt="Rudra's Photo" class="profile-img">
+      <h2>About Me</h2>
+      <p>Hello! I'm <strong>Rudra Parmar</strong>, a Diploma student in Computer Engineering at GTU.  
+      I love coding, learning DSA, exploring Python, and building fun projects.  
+      My dream is to enter the world of AI with a strong foundation in basics.</p>
+    </div>
+    
+    <!-- Interests Cards -->
+    <div class="interests">
+      <div class="card">
+        <i class="fas fa-laptop-code"></i>
+        <h3>Programming</h3>
+        <p>I enjoy solving problems using C++, Python, and exploring new technologies.</p>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-project-diagram"></i>
+        <h3>Learning DSA</h3>
+        <p>Building a strong base in Data Structures & Algorithms to crack real challenges.</p>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-robot"></i>
+        <h3>Artificial Intelligence</h3>
+        <p>Inspired to work in AI & Machine Learning, aiming to create impactful solutions.</p>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-dumbbell"></i>
+        <h3>Fitness & Gym</h3>
+        <p>Fitness keeps me motivated, focused, and disciplined in studies & life.</p>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-gamepad"></i>
+        <h3>Gaming & Tech</h3>
+        <p>I love exploring games and gadgets that push creativity and logic skills.</p>
+      </div>
+    </div>
+    
+    <blockquote>“Keep learning, keep building.”</blockquote>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Rudra Parmar | Made with ❤️ in Bhuj</p>
+    <div class="social-links">
+      <a href="#"><i class="fab fa-github"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+  </footer>
+</body>
+</html>
